@@ -4,8 +4,6 @@ Name:		dqs
 Version:	3.3.2
 Release:	3
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
 License:	GPL
 Source0:	ftp://ftp.csit.fsu.edu/pub/dqs/DQS-%{version}.tgz
 Source1:	%{name}-PLD-%{name}.h
@@ -28,8 +26,6 @@ System Rozproszonego Kolejkowania Zadañ.
 Summary:        Distributet Quening System (Master server)
 Summary(pl):    System Rozproszonego Kolejkowania (Master server)
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
 Requires:       %{name} = %{version}
 
 %description master 

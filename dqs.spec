@@ -49,8 +49,7 @@ cp %{SOURCE2} SRC/def.h
 %patch1 -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" CC=gcc ; export CFLAGS CC
-%{__make}
+%{__make} CFLAGS="$RPM_OPT_FLAGS" CC=gcc 
 
 %install
 rm -rf $RPM_BUILD_ROOT

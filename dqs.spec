@@ -1,12 +1,14 @@
 Summary:	Distributet Quening System
+Summary(pl):	System Rozproszonego Kolejkowania
 Name:		dqs
 Version:	3.3.2
 Release:	1
-Group:		System/Administration
-######		Unknown group!
+Group:		Applications/Networking
+Group(de):	Applikationen/Netzwerkwesen
+Group(pl):	Aplikacje/Sieciowe
 License:	GPL
 Source0:	ftp://ftp.csit.fsu.edu:/pub/pub/dqs/DQS-%{version}.tar.gz
-Source1:	%{name}-PLD-dqs.h
+Source1:	%{name}-PLD-%{name}.h
 Source2:	%{name}-PLD-def.h
 Source3:	%{name}-PLD-resolve_file
 Source4:	%{name}-PLD-Makefile
@@ -17,7 +19,10 @@ URL:		http://www.scri.fsu.edu/~pasko/dqs.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Distributet quening system
+Distributed quening system
+
+%description -l pl
+System Rozproszonego Kolejkowania Zadañ.
 
 %prep
 %setup  -q -n DQS3
@@ -48,14 +53,6 @@ install COPYRIGHT README ChangeLog KnownBugs ReleaseNotes_3.3.1 ToDo  \
 	$RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 gzip -n9  $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/{COPYRIGHT,README,ChangeLog,KnownBugs,ReleaseNotes_3.3.1,ToDo}
 
-
-%pre
-
-%preun
-
-%post
-
-%postun
 
 %clean
 rm -rf $RPM_BUILD_ROOT

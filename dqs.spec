@@ -12,26 +12,26 @@ Source3:	%{name}-PLD-resolve_file
 Source4:	%{name}-PLD-conf_file
 #Source6:	%{name}-init
 Patch0:		%{name}-DESTDIR.patch
-Patch1:		dqs-mq.patch
+Patch1:		%{name}-mq.patch
 URL:		http://www.scri.fsu.edu/~pasko/dqs.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%description 
+%description
 Distributed quening system
 
 %description -l pl
 System Rozproszonego Kolejkowania Zadañ.
 
 %package master
-Summary:        Distributet Quening System (Master server)
-Summary(pl):    System Rozproszonego Kolejkowania (Master server)
+Summary:	Distributet Quening System (Master server)
+Summary(pl):	System Rozproszonego Kolejkowania (Master server)
 Group:		Applications/Networking
-Requires:       %{name} = %{version}
+Requires:	%{name} = %{version}
 
-%description master 
+%description master
 Distributed quening system. Master server.
 
-%description -l pl master
+%description master -l pl
 System Rozproszonego Kolejkowania Zadañ. Master server.
 
 
@@ -72,8 +72,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/* 
-%attr(755,root,root) %{_sbindir}/qconf332 
+%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_sbindir}/qconf332
 %attr(755,root,root) %{_sbindir}/dqs_execd332
 %doc %{_mandir}/man1
 %doc %{_docdir}/%{name}-%{version}
@@ -82,4 +82,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(640,root,root) %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/*
 %files master
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_sbindir}/qmaster332 
+%attr(755,root,root) %{_sbindir}/qmaster332

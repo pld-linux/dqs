@@ -48,7 +48,7 @@ cp %{SOURCE2} SRC/def.h
 %patch1 -p1
 
 %build
-%{__make} CFLAGS="%{rpmcflags}" CC=gcc 
+%{__make} CFLAGS="%{rpmcflags}" CC=%{__cc}
 
 %install
 rm -rf $RPM_BUILD_ROOT

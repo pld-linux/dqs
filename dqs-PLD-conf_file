@@ -1,10 +1,11 @@
  QMASTER_SPOOL_DIR         /var/spool/dqs
  EXECD_SPOOL_DIR           /var/spool/dqs
+ DEFAULT_CELL              tqo.iqo.uni-hannover.de
  RESERVED_PORT             TRUE
- DEFAULT_CELL		   localhost
- DQS_EXECD_SERVICE         dqs313_execd
- QMASTER_SERVICE           dqs313_qmaster
- INTERCELL_SERVICE         dqs313_intercell
+ DQS_EXECD_SERVICE         dqs33_dqs_execd
+ QMASTER_SERVICE           dqs33_qmaster
+ INTERCELL_SERVICE         dqs33_dqs_intercell
+ KLOG                      /usr/local/bin/klog
  REAUTH_TIME               60
  MAILER                    /bin/mail
  DQS_BIN                   /usr/bin
@@ -18,8 +19,8 @@
  LOGFACILITY               LOG_VIA_COMBO
  LOGLEVEL                  LOG_INFO
  MIN_UID                   1000
- MIN_GID                   100
- MAXUJOBS                  10
+ MIN_GID                   1000
+ MAXUJOBS                  100
  OUTPUT_HANDLING           LEAVE_OUTPUT_FILES
  ADDON_SCRIPT              NONE
  ADDON_INFO                NONE

@@ -1,0 +1,12 @@
+diff -urN DQS3-orig/SRC/dqs_parse_qconf.c DQS3/SRC/dqs_parse_qconf.c
+--- DQS3-orig/SRC/dqs_parse_qconf.c	Fri Dec  1 05:42:01 2000
++++ DQS3/SRC/dqs_parse_qconf.c	Sat Apr 28 17:21:37 2001
+@@ -920,7 +920,7 @@
+     
+     if (!strcmp("-Mq",sp->str0))
+       {
+-         dqs_validate_option(Mq_OPT,sp->str0);
++         dqs_validate_option(mq_OPT,sp->str0);
+          sp=dqs_parser_get_next(sp,sp->str0);
+ 
+          listel_ptr->type=QCONF;

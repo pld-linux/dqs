@@ -1,0 +1,121 @@
+diff -urN DQS3.orig/Makefile DQS3/Makefile
+--- DQS3.orig/Makefile	Wed Oct 21 19:39:14 1998
++++ DQS3/Makefile	Thu May 10 12:49:46 2001
+@@ -1,10 +1,11 @@
+-INSTALL_DIR=/usr/local/DQS/bin
+-BIN_DIR=/usr/local/DQS/bin
+-CONF_DIR=/usr/local/DQS/common/conf
+-DOC_DIR=/usr/local/DQS/common/doc
+-LIB_DIR=/usr/local/DQS/local/lib
+-MAN1_DIR=/usr/local/DQS/man/man1
+-MAN3_DIR=/usr/local/DQS/man/man3
++INSTALL_DIR=$(DESTDIR)/usr/bin
++BIN_DIR=$(DESTDIR)/usr/bin
++SBIN_DIR=$(DESTDIR)/usr/sbin
++CONF_DIR=$(DESTDIR)/etc/dqs
++DOC_DIR=$(DESTDIR)/usr/share/doc/dqs-3.3.2
++LIB_DIR=$(DESTDIR)/usr/lib
++MAN1_DIR=$(DESTDIR)/usr/share/man/man1
++MAN3_DIR=$(DESTDIR)/usr/share/man/man3
+ ROOT=0
+ DQS_ROOT=0
+ SYSGRP=0
+@@ -24,7 +25,7 @@
+ # dirs - Make Install Directories
+ 
+ dirs:
+-	-mkdir -p $(INSTALL_DIR) $(ARC_DIR) $(BIN_DIR)
++	-mkdir -p $(INSTALL_DIR) $(ARC_DIR) $(BIN_DIR) $(SBIN_DIR)
+ 	-mkdir -p $(DOC_DIR) $(LIB_DIR) $(MAN1_DIR) $(MAN3_DIR)
+ 	-mkdir -p $(CONF_DIR)
+ 	-chmod 755 $(CONF_DIR)
+@@ -59,7 +60,7 @@
+ 
+ installbin: dirs
+ 	UTIL/make_arcs make CC=$(CC) -f Makefile $@ \
+-	BIN_DIR=$(BIN_DIR) DQS_ROOT=$(DQS_ROOT) \
++	BIN_DIR=$(BIN_DIR) SBIN_DIR=$(SBIN_DIR) DQS_ROOT=$(DQS_ROOT) \
+ 	DQS_SYSGRP=$(DQS_SYSGRP)
+ 
+ #******************************************************
+diff -urN DQS3.orig/SRC/Makefile DQS3/SRC/Makefile
+--- DQS3.orig/SRC/Makefile	Fri Jul  2 17:06:53 1999
++++ DQS3/SRC/Makefile	Thu May 10 12:36:19 2001
+@@ -115,7 +115,7 @@
+ 		rm -f Makefile.c
+ 		cp $(PROTO) Makefile.c
+ 		echo "#define `../UTIL/config.guess 1`" | sed s/\\./_/g | sed s/-/_/g > Makefile.h
+-		$(CC) -E Makefile.c | sed 's/\/ /\//g' | sed 's/ \//\//g' | sed 's/ ( BIN_DIR )/(BIN_DIR)/g' > Makefile.typ
++		$(CC) -E Makefile.c | sed 's/\/ /\//g' | sed 's/ \//\//g' | sed 's/ ( SBIN_DIR )/(SBIN_DIR)/g'| sed 's/ ( BIN_DIR )/(BIN_DIR)/g' > Makefile.typ
+ #		rm -f Makefile.c
+ 		@$(MAKE) -f Makefile.typ $@
+ 
+@@ -123,14 +123,14 @@
+ 		rm -f Makefile.c
+ 		cp $(PROTO) Makefile.c
+ 		echo "#define `../UTIL/config.guess 1`" | sed s/\\./_/g | sed s/-/_/g > Makefile.h
+-		$(CC) -E Makefile.c | sed 's/\/ /\//g' | sed 's/ \//\//g' | sed 's/ ( BIN_DIR )/(BIN_DIR)/g' > Makefile.typ
++		$(CC) -E Makefile.c | sed 's/\/ /\//g' | sed 's/ \//\//g' | sed 's/ ( SBIN_DIR )/(SBIN_DIR)/g'| sed 's/ ( BIN_DIR )/(BIN_DIR)/g' > Makefile.typ
+ 		@$(MAKE) -f Makefile.typ $@
+ 
+ .DEFAULT	: 
+ 		rm -f Makefile.c
+ 		cp $(PROTO) Makefile.c
+ 		echo "#define `../UTIL/config.guess`" | sed s/\\./_/g | sed s/-/_/g > Makefile.h
+-		$(CC) -E Makefile.c | sed 's/\/ /\//g' | sed 's/ \//\//g' | sed 's/ ( BIN_DIR )/(BIN_DIR)/g' > Makefile.typ
++		$(CC) -E Makefile.c | sed 's/\/ /\//g' | sed 's/ \//\//g' | sed 's/ ( SBIN_DIR )/(SBIN_DIR)/g'| sed 's/ ( BIN_DIR )/(BIN_DIR)/g' > Makefile.typ
+ #		rm -f Makefile.c
+ 		@$(MAKE) -f Makefile.typ $@
+ 
+diff -urN DQS3.orig/SRC/Makefile.proto DQS3/SRC/Makefile.proto
+--- DQS3.orig/SRC/Makefile.proto	Mon Dec 11 04:02:19 2000
++++ DQS3/SRC/Makefile.proto	Thu May 10 12:37:33 2001
+@@ -764,7 +764,7 @@
+ 		-rm -f $(BIN_DIR)/QMASTER_BIN   $(BIN_DIR)/DSH_BIN
+ 		-rm -f $(BIN_DIR)/PVM_CLEAN 
+ 
+-installbin::    $(BIN_DIR)/QMASTER_BIN $(BIN_DIR)/QSUB_BIN $(BIN_DIR)/QSTAT_BIN
++installbin::    $(SBIN_DIR)/QMASTER_BIN $(BIN_DIR)/QSUB_BIN $(BIN_DIR)/QSTAT_BIN
+ 
+ installbin::	$(BIN_DIR)/DQS_EXECD_BIN $(BIN_DIR)/QDEL_BIN $(BIN_DIR)/QCONF_BIN
+ 
+@@ -785,8 +785,8 @@
+ $(BIN_DIR)/QALTER_BIN:		qalter
+ 	$(INSTALL) -o $(DQS_ROOT) -g $(DQS_SYSGRP) -m 4755 qalter $(BIN_DIR)/QALTER_BIN
+ 
+-$(BIN_DIR)/QMASTER_BIN:	qmaster
+-	$(INSTALL) -o $(DQS_ROOT) -g $(DQS_SYSGRP) -m 0700 qmaster $(BIN_DIR)/QMASTER_BIN
++$(SBIN_DIR)/QMASTER_BIN:	qmaster
++	$(INSTALL) -o $(DQS_ROOT) -g $(DQS_SYSGRP) -m 0700 qmaster $(SBIN_DIR)/QMASTER_BIN
+ 	
+ $(BIN_DIR)/QHOLD_BIN: qhold
+ 	$(INSTALL) -o $(DQS_ROOT) -g $(DQS_SYSGRP) -m 4755 qhold $(BIN_DIR)/QHOLD_BIN
+@@ -801,10 +801,10 @@
+ 	$(INSTALL) -o $(DQS_ROOT) -g $(DQS_SYSGRP) -m 4755 qstat $(BIN_DIR)/QSTAT_BIN
+ 
+ $(BIN_DIR)/QCONF_BIN:		qconf
+-	$(INSTALL) -o $(DQS_ROOT) -g $(DQS_SYSGRP) -m 4755 qconf $(BIN_DIR)/QCONF_BIN
++	$(INSTALL) -o $(DQS_ROOT) -g $(DQS_SYSGRP) -m 4755 qconf $(SBIN_DIR)/QCONF_BIN
+ 
+ $(BIN_DIR)/DQS_EXECD_BIN:	dqs_execd
+-	$(INSTALL) -o $(DQS_ROOT) -g $(DQS_SYSGRP) -m 0755 dqs_execd $(BIN_DIR)/DQS_EXECD_BIN
++	$(INSTALL) -o $(DQS_ROOT) -g $(DQS_SYSGRP) -m 0755 dqs_execd $(SBIN_DIR)/DQS_EXECD_BIN
+ 
+ $(BIN_DIR)/PVM_CLEAN:	../UTIL/pvmcleanup.sh
+ 	cp ../UTIL/pvmcleanup.sh .
+diff -urN DQS3.orig/UTIL/install DQS3/UTIL/install
+--- DQS3.orig/UTIL/install	Tue Aug 18 16:39:14 1998
++++ DQS3/UTIL/install	Wed May  9 23:42:13 2001
+@@ -29,12 +29,6 @@
+ 
+ echo "------------$CP $1 $2"
+ $CP $1 $2
+-echo "------------$CHOWN $2"
+-$CHOWN $2
+-echo "------------$CHGRP $2"
+-$CHGRP $2
+-echo "------------$CHMOD $2"
+-$CHMOD $2
+ 
+ exit 0
+ 

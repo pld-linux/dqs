@@ -7,27 +7,27 @@
 #define LOG_FILE                  "/var/log/dqs/log_file"
 #define QMASTER_SPOOL_DIR         "/var/spool/dqs"
 #define EXECD_SPOOL_DIR           "/var/spool/dqs"
-#define DEFAULT_CELL              "localdomain"
+#define DEFAULT_CELL              ""
 #define RESERVED_PORT             TRUE
-#define DQS_EXECD_SERVICE         "dqs_execd"
-#define QMASTER_SERVICE           "dqs_qmaster"
-#define INTERCELL_SERVICE         "dqs_intercell"
+#define DQS_EXECD_SERVICE         "dqs33_dqs_execd"
+#define QMASTER_SERVICE           "dqs33_qmaster"
+#define INTERCELL_SERVICE         "dqs33_dqs_intercell"
 #define KLOG                      "/usr/local/bin/klog"
 #define REAUTH_TIME               60
 #define MAILER                    "/bin/mail"
 #define DQS_BIN                   "/usr/bin"
-#define ADMINISTRATOR             "postmater@localhost"
+#define ADMINISTRATOR             "postmaster@localhost"
 #define DEFAULT_ACCOUNT           "GENERAL"
-#define DEFAULT_HOST              "localhost"
+#define DEFAULT_HOST              "NONE"
 #define LOGMAIL                   FALSE
 #define DEFAULT_RERUN             FALSE
 #define DEFAULT_SORT_SEQ_NO       FALSE
 #define SYNC_IO                   FALSE
 #define USER_ACCESS               ACCESS_FREE
-#define LOGFACILITY               LOG_VIA_SYSLOG
+#define LOGFACILITY               LOG_VIA_COMBO
 #define LOGLEVEL                  LOG_INFO
 #define MIN_UID                   1000
-#define MIN_GID                   100
+#define MIN_GID                   1000
 #define MAXUJOBS                  100
 #define OUTPUT_HANDLING           LEAVE_OUTPUT_FILES
 #define ADDON_SCRIPT              NONE
@@ -46,9 +46,9 @@
 #define volatile
 #define labs abs
 #endif
-#define SLAVE_LOOP_TIME           "200"
-#define LINK_FILE_PATH            ""
-#define COPY_FILE_DELAY           "300"
+#define SLAVE_LOOP_TIME                 "200"
+#define LINK_FILE_PATH                  ""
+#define COPY_FILE_DELAY                 "300"
 /* To use the link strategy you must ensure, that                  */
 /* (1) a file with the value of TMP_LINK_OUTPUT_FILES exists in    */
 /*     the directory EXECD_SPOOL_DIR and contains the required     */

@@ -15,6 +15,10 @@ static char def_rcsid[]="$Id$";
  * implied warranty.
  *
  * $Log$
+ * Revision 1.1  2001/03/19 20:45:31  dobrek
+ * -3f2839b879f378e29cfee71b2738b8ec  DQS-3.3.1.tgz
+ * -And related stuff
+ *
  * Revision 1.8  2000/03/09 03:56:07  chuck
  * Modified FLOCK macro for lockf on System 5 hosts and flock on
  * BSD hosts.  FLOCK now only locks.  New macro FUNLOCK is now used
@@ -647,7 +651,7 @@ static char def_rcsid[]="$Id$";
 #define MPI                              2
 #define GENERIC_SLA                      3
 #define GENERIC_ALL                      4
-#define PVM                              5
+#define DQSPVM                           5
 #define TCGMSG                           6
 /********************************************************************************/
 

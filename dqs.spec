@@ -1,18 +1,18 @@
 Summary:	Distributet Quening System
 Name:		dqs
-Version:	3.3.1
+Version:	3.3.2
 Release:	1
 Group:		System/Administration
-Copyright:	GPL
-Vendor:         PLD
-Source0:	ftp://ftp2.scri.fsu.edu/pub/dqs/DQS-%{version}.tgz
-Source1:        dqs-PLD-dqs.h
-Source2:	dqs-PLD-def.h
-Source3:	dqs-PLD-resolve_file
-Source4:	dqs-PLD-Makefile
-Source5:	dqs-PLD-conf_file
-Source6:	dqs-init
-Patch0:		dqs-install.patch
+######		Unknown group!
+License:	GPL
+Source0:	ftp://ftp.csit.fsu.edu:/pub/pub/dqs/DQS-%{version}.tar.gz
+Source1:	%{name}-PLD-dqs.h
+Source2:	%{name}-PLD-def.h
+Source3:	%{name}-PLD-resolve_file
+Source4:	%{name}-PLD-Makefile
+Source5:	%{name}-PLD-conf_file
+Source6:	%{name}-init
+Patch0:		%{name}-install.patch
 URL:		http://www.scri.fsu.edu/~pasko/dqs.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -27,12 +27,12 @@ cp %{SOURCE4} Makefile
 %patch0 -p1
 
 %build
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-make  DESTDIR=$RPM_BUILD_ROOT installall
+%{__make}  DESTDIR=$RPM_BUILD_ROOT installall
 
 install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/resolve_file
 install %{SOURCE5} $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/conf_file
@@ -68,6 +68,3 @@ rm -rf $RPM_BUILD_ROOT
 %dir /var/spool/%{name}/common_dir
 %dir /var/log/%{name}
 %attr(640,root,root) %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/*
-
-
-%changelog

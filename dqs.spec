@@ -1,4 +1,4 @@
-Summary:	Distributet Quening System
+Summary:	Distributed Queuing System
 Summary(pl):	System Rozproszonego Kolejkowania
 Name:		dqs
 Version:	3.3.2
@@ -17,7 +17,7 @@ URL:		http://www.scri.fsu.edu/~pasko/dqs.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Distributed quening system
+Distributed queuing system.
 
 %description -l pl
 System Rozproszonego Kolejkowania Zadañ.

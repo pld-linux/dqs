@@ -30,15 +30,13 @@ Summary(pl):    System Rozproszonego Kolejkowania (Master server)
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
-Requires:       %{name} == %{verion}
+Requires:       %{name} == %{version}
 
 %description master 
 Distributed quening system. Master server.
 
 %description -l pl master
 System Rozproszonego Kolejkowania Zadañ. Master server.
-
-
 
 %prep
 %setup  -q -n DQS3
@@ -49,7 +47,7 @@ cp %{SOURCE2} SRC/def.h
 %patch1 -p1
 
 %build
-%{__make} CFLAGS="$RPM_OPT_FLAGS" CC=gcc 
+%{__make} CFLAGS="%{rpmcflags}" CC=%{__cc}
 
 %install
 rm -rf $RPM_BUILD_ROOT

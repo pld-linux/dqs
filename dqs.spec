@@ -2,7 +2,7 @@ Summary:	Distributet Quening System
 Summary(pl):	System Rozproszonego Kolejkowania
 Name:		dqs
 Version:	3.3.2
-Release:	2
+Release:	3
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
@@ -30,7 +30,7 @@ Summary(pl):    System Rozproszonego Kolejkowania (Master server)
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
-Requires:       %{name} == %{version}
+Requires:       %{name} = %{version}
 
 %description master 
 Distributed quening system. Master server.
@@ -38,16 +38,17 @@ Distributed quening system. Master server.
 %description -l pl master
 System Rozproszonego Kolejkowania Zadañ. Master server.
 
+
+
 %prep
 %setup  -q -n DQS3
 cp %{SOURCE1} SRC/dqs.h
 cp %{SOURCE2} SRC/def.h
-#cp %{SOURCE4} Makefile
 %patch0 -p1
 %patch1 -p1
 
 %build
-%{__make} CFLAGS="%{rpmcflags}" CC=%{__cc}
+%{__make} CFLAGS="%{rpmcflags}" CC=gcc 
 
 %install
 rm -rf $RPM_BUILD_ROOT

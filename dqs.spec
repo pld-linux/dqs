@@ -6,6 +6,7 @@ Release:	3
 Group:		Applications/Networking
 License:	GPL
 Source0:	ftp://ftp.csit.fsu.edu/pub/dqs/DQS-%{version}.tgz
+# Source0-md5:	f571710957d1ca0c821d54a43f927a33
 Source1:	%{name}-PLD-%{name}.h
 Source2:	%{name}-PLD-def.h
 Source3:	%{name}-PLD-resolve_file

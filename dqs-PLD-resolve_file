@@ -1,0 +1,8 @@
+# NOTE! blank lines NOT permitted #
+# NOTE! fields must be separated by one(1) AND ONLY one space #
+# 1st field = cell_name
+# 2nd field = primary qmaster
+# 3rd field = primary qmaster alias
+# 4th field = secondary qmaster
+# 5th field = secondary qmaster alias
+# scri.fsu.edu lnx4 lnx4.scri.fsu.edu NONE NONE

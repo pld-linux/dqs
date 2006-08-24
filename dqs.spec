@@ -80,7 +80,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc %{_docdir}/%{name}-%{version}
 %dir /var/spool/%{name}/common_dir
 %dir /var/log/%{name}
+%dir %{_sysconfdir}/%{name}
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/*
+
 %files master
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_sbindir}/qmaster332

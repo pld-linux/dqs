@@ -27,15 +27,13 @@ System Rozproszonego Kolejkowania Zadañ.
 Summary:	Distributet Quening System (Master server)
 Summary(pl):	System Rozproszonego Kolejkowania (Master server)
 Group:		Applications/Networking
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description master
 Distributed quening system. Master server.
 
 %description master -l pl
 System Rozproszonego Kolejkowania Zadañ. Master server.
-
-
 
 %prep
 %setup  -q -n DQS3
@@ -66,7 +64,6 @@ install DOC/user_guide/*.html $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 install COPYRIGHT README ChangeLog KnownBugs ReleaseNotes_3.3.1 ToDo  \
 	$RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 gzip -n9  $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/{COPYRIGHT,README,ChangeLog,KnownBugs,ReleaseNotes_3.3.1,ToDo}
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT

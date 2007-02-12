@@ -1,5 +1,5 @@
 Summary:	Distributed Queuing System
-Summary(pl.UTF-8):   System Rozproszonego Kolejkowania
+Summary(pl.UTF-8):	System Rozproszonego Kolejkowania
 Name:		dqs
 Version:	3.3.2
 Release:	3
@@ -25,7 +25,7 @@ System Rozproszonego Kolejkowania Zadań.
 
 %package master
 Summary:	Distributet Quening System (Master server)
-Summary(pl.UTF-8):   System Rozproszonego Kolejkowania (Master server)
+Summary(pl.UTF-8):	System Rozproszonego Kolejkowania (Master server)
 Group:		Applications/Networking
 Requires:	%{name} = %{version}-%{release}
 
